@@ -47,23 +47,52 @@
 
 #Код бинарного дерева поиска
 
-class Node():
-    def __init__(self, key):
-        self.left = None
-        self.right = None
-        self.value = key
+# class Node():
+#     def __init__(self, key):
+#         self.left = None
+#         self.right = None
+#         self.value = key
+#
+# def insert(root, key):
+#     if root is None:
+#         return Node(key)
+#     else:
+#         if root.value < key:
+#             root.right = insert(root.right, key)
+#         else:
+#             root.left = insert(root.left, key)
+#
+#     return root
+#
+# root = Node(70)
+# root = insert(root, 30)
+# root = insert(root, 56)
+# root = insert(root, 89)
+# root = insert(root, 45)
+# root = insert(root, 60)
+# root = insert(root, 73)
+# root = insert(root, 98)
+# root = insert(root, 84)
 
-def insert(root, key):
-    if root is None:
-        return Node(key)
-    else:
-        if root.value < key:
-            root.right = insert(root.right, key)
-        else:
-            root.left = insert(root.left, key)
+class Graph():
+    def __init__(self):
+        self.graph = {}
+    def addEdge(self, u, v):
+        if u not in self.graph:
+            self.graph[u] = []
+        self.graph[u].append(v)
 
-    return root
+    def print_Graph(self):
+# {0: [1, 2], 1: [0, 2], 2: [0, 1, 3], 3: [2]}
+        for node in self.graph:
+            print(node, "->", " -> ".join(map(str, self.graph[node])))
 
-root = Node(70)
-
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 4)
+g.print_Graph()
 
